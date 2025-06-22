@@ -1,7 +1,10 @@
 Verrollung-
 Slippage Analysis of a Structure Supported at 4 Points
+
 Project Purpose
-The purpose of this program is to document the slippage analysis of a structure supported at four points. The program extracts data from the Dlubak Rstab static Modell using the COM Interface and outputs it into a formatted existing Excel file. Since the program was written for a specific task, its usefulness for the average user is limited to the practical interaction of a C# program with the Rstab COM Interface and MS Excel.
+The purpose of this program is to document the slippage analysis of a structure supported at four points.
+The program extracts data from the Dlubak Rstab static Modell using the COM Interface and outputs it into a formatted existing Excel file. 
+Since the program was written for a specific task, its usefulness for the average user is limited to the practical interaction of a C# program with the Rstab COM Interface and MS Excel.
 Installation and Usage Guide
 1.	Start the program by running the exe file.
 2.	The program requires an Rstab model to be running.
