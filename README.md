@@ -14,7 +14,7 @@ Since the program was written for a specific task, its usefulness for the averag
 ## Support Information
 If you need assistance, please contact: pecsavi73@gamail.com  
 ## Maintainers and Contributors  
-The sole developer of the project: Csaba Perenyi (male)
+The sole developer of the project: Csaba Perenyi (he/him)
 ## License
 This project is licensed under the terms that anyone can use it, but modifications to the original files are not allowed.
 ## Contribution Guidelines
