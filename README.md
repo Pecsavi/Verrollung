@@ -12,7 +12,7 @@ Since the program was written for a specific task, its usefulness for the averag
 5.	The program will then automatically identify the load cases specified as live load in the load combination that are critical for the structure's slippage.
 
 ## Support Information
-If you need assistance, please contact: pecsavi73@gamail.com  
+If you need assistance, please contact: pecsavi73@gmail.com  
 ## Maintainers and Contributors  
 The sole developer of the project: Csaba Perenyi (he/him)
 ## License
