@@ -11,6 +11,7 @@ Installation and Usage Guide
 3.	The program is written for Windows and works with Rstab8.
 4.	After starting, the program will prompt for the support points and load combination.
 5.	The program will then automatically identify the load cases specified as useful in the load combination that are critical for the structure's slippage.
+
 Support Information
 If you need assistance, please contact: (email address)
 Maintainers and Contributors
