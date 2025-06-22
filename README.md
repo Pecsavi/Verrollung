@@ -25,6 +25,6 @@ This project is licensed under the terms that anyone can use it, but modificatio
 ### Make Your Changes
 •	**Make your changes:** Implement the necessary changes in your branch. Ensure your changes are well-documented and tested.
 ### Submit a Pull Request
-•	**Submit a pull request:** Once your changes are ready, submit a pull request (PR) to the main repository. In the PR, describe the changes you made and why. Note that these changes are suggestions and will not be merged directly into the main project. The project maintainer will review the suggestions and decide whether to incorporate them.
-Code of Conduct
+•	**Submit a pull request:** Once your changes are ready, submit a pull request (PR) to the main repository. In the PR, describe the changes you made and why. Note that these changes are suggestions and will not be merged directly into the main project. The project maintainer will review the suggestions and decide whether to incorporate them.  
+### Code of Conduct  
 •	**Code of Conduct:** Follow the project's code of conduct to ensure respectful and professional interactions.
