@@ -19,12 +19,12 @@ The sole developer of the project: (Csaba Perenyi)
 This project is licensed under the terms that anyone can use it, but modifications to the original files are not allowed.
 ## Contribution Guidelines
 ### Fork the Repository
-•	Fork the repository: Create a personal copy of the project in your own GitHub account by clicking the "Fork" button on the project's main page.
+•	**Fork the repository:** Create a personal copy of the project in your own GitHub account by clicking the "Fork" button on the project's main page.
 ### Create a New Branch
-•	Create a new branch: Make your changes in a new branch to keep the main branch clean. Name the new branch to reflect the purpose of the changes (e.g., suggestion/issue-123 or suggestion/new-feature).
+•	**Create a new branch:** Make your changes in a new branch to keep the main branch clean. Name the new branch to reflect the purpose of the changes (e.g., suggestion/issue-123 or suggestion/new-feature).
 ### Make Your Changes
-•	Make your changes: Implement the necessary changes in your branch. Ensure your changes are well-documented and tested.
+•	**Make your changes:** Implement the necessary changes in your branch. Ensure your changes are well-documented and tested.
 ### Submit a Pull Request
-•	Submit a pull request: Once your changes are ready, submit a pull request (PR) to the main repository. In the PR, describe the changes you made and why. Note that these changes are suggestions and will not be merged directly into the main project. The project maintainer will review the suggestions and decide whether to incorporate them.
+•	**Submit a pull request:** Once your changes are ready, submit a pull request (PR) to the main repository. In the PR, describe the changes you made and why. Note that these changes are suggestions and will not be merged directly into the main project. The project maintainer will review the suggestions and decide whether to incorporate them.
 Code of Conduct
-•	Code of Conduct: Follow the project's code of conduct to ensure respectful and professional interactions.
+•	**Code of Conduct:** Follow the project's code of conduct to ensure respectful and professional interactions.
