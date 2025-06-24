@@ -1,13 +1,8 @@
 ﻿using Dlubal.RSTAB8;
 using NLog;
-using NLog.Fluent;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 namespace Verrollungsnachweis
 {
@@ -40,7 +35,7 @@ namespace Verrollungsnachweis
             {
                 _n = value;
                 nSet = true;
-                if (tSet) Update_tpern();
+                //if (tSet) Update_tpern();
             }
         }
         public double T
@@ -50,17 +45,18 @@ namespace Verrollungsnachweis
             {
                 _t = value;
                 tSet = true;
-                if (nSet) Update_tpern();
+                //if (nSet) Update_tpern();
             }
         }
-        public double TperN => _tpern;
+        //public double TperN => _tpern;
         public MyForce() { }
-        void Update_tpern()
+        /*void Update_tpern()
         {
-            if (Math.Abs(T) > 10e-6 && Math.Abs(N) > 10e-6) _tpern = _t / Math.Abs(_n);
+            if (Math.Abs(T) > 10e-6 && N > 10e-6) _tpern = _t / _n;
             else if (Math.Abs(T) < 10e-6) _tpern = 0;
-            else if (Math.Abs(N) < 10e-6) _tpern = 2 * _t;
-        }
+            else if (N <0) _tpern = 1;
+            else if (N < 10e-6) _tpern = 2 * _t;
+        }*/
     }
     public class MyLoadcase
     {
@@ -133,7 +129,7 @@ namespace Verrollungsnachweis
         public int[] supportRotateDirection = new int[2] { 0, 0 };
         private int? gegengewichtIndex;
         double[] Ergebnis_trad_sum = new double[2];
-        double[] Ergebnis_new_sum = new double[2];
+        double[] Bestratio_new2 = new double[2];
         public int? GegengewichtIndex
         {
             get { return gegengewichtIndex; }
@@ -492,98 +488,93 @@ namespace Verrollungsnachweis
             
             return ints;
         }
-        internal List<int> GetTperN(List<MyLoadcase> loadcases, int i, string min_max)
+
+        public static IEnumerable<List<T>> CartesianProduct<T>(IEnumerable<IEnumerable<T>> sequences)
         {
-
-            // 1. Group map: assign each LC to its group.
-            var groupMap = new Dictionary<string, string[]>();
-            foreach (var group in all_Q_LFNo_inGroups)
+            IEnumerable<List<T>> result = new[] { new List<T>() };
+            foreach (var sequence in sequences)
             {
-                foreach (var lc in group)
-                {
-                    groupMap[lc] = group;
-                }
+                result = from acc in result
+                         from item in sequence
+                         select new List<T>(acc) { item };
             }
-
-            // 2. Sort the load cases in descending order by T/N.
-
-            List<MyLoadcase> sorted = new List<MyLoadcase>();
-
-            if (min_max=="min")
-            {
-                sorted = loadcases.OrderBy(p => (p.Force[i].T + totalG[i].T) / Math.Abs(p.Force[i].N + totalG[i].N)).ToList();
-            }
-            else { sorted = loadcases.OrderByDescending(p => (p.Force[i].T + totalG[i].T) / Math.Abs(p.Force[i].N + totalG[i].N)).ToList(); }
-            
-
-            var result = new List<int>();
-            var processedGroups = new HashSet<string>(); // already processed groups
-            double sumT = totalG[i].T, sumN = totalG[i].N;
-
-            foreach (var lf in sorted)
-            {
-                string lcNumber = lf.Number;
-
-                // If the group has already been processed, skip it
-                var group = groupMap[lcNumber];
-                string groupId = string.Join(",", group); // identifier
-
-                if (processedGroups.Contains(groupId))
-                    continue;
-
-                double a = (sumT + lf.Force[i].T) / Math.Abs(sumN + lf.Force[i].N);
-                double b = Math.Abs(sumN) < 0.5 ? sumT * 2 : sumT / Math.Abs(sumN);
-                bool condition = (min_max == "max") ? a > b : a < b;
-
-                if (condition)
-                {
-                    sumT += lf.Force[i].T;
-                    sumN += lf.Force[i].N;
-                    result.Add(lf.QIndex);
-
-                }
-
-                processedGroups.Add(groupId);
-
-            }
-            result.Sort();
             return result;
         }
-        public List <int[]> CalculatedExcelRow_New()
+
+        internal List<List<MyLoadcase>> groupedQ(List<string[]> all_Q_LFNo_inGroups)
         {
-            List<List<int>> maxCombo = new List<List<int>>();
-            List<int> minTperN = new List<int>();
-            List<int> maxTperN = new List<int>();
 
-            for (int i = 0; i < 2; i++)
+            return all_Q_LFNo_inGroups
+             .Select(group =>
+             loadcaseList
+             .Where(lc => group.ToList().Contains(lc.Number))
+             .Where(lc => lc.QIndex != -1)
+             .ToList()
+             )
+             .ToList();
+
+        }
+        internal (List<MyLoadcase> BestCombo, double BestRatio) FindBestCombination(
+         List<MyLoadcase> allCases, int i)
+        {
+            
+            var mandatory = loadcaseList.Where(lc => lc.LoadType == "G").ToList();
+
+            List<List<MyLoadcase>> groupedQLoads = new List<List<MyLoadcase>>();
+            groupedQLoads=groupedQ(all_Q_LFNo_inGroups);
+            
+            var groupOptions = groupedQLoads
+                .Select(group => new List<MyLoadcase> { new MyLoadcase(900,"","") }.Concat(group))
+                .ToList();
+
+            var bestCombo = new List<MyLoadcase>();
+            double bestRatio = double.MinValue;
+
+            foreach (var combo in CartesianProduct(groupOptions))
             {
-                minTperN = GetTperN(q_lastenList, i, "min");
-                maxTperN = GetTperN(q_lastenList, i, "max");
+                //var selected = combo.Where(x => x != null).Cast<MyLoadcase>().ToList();
+                var selected = combo.Where(x => x != null && x.Index != 900).ToList();
+                var fullCombo = new List<MyLoadcase>(mandatory);
 
-                var min = 
-                    (totalG_with_GG[i].T + minTperN.Sum(index => (q_lastenList[index].Force[i].T)))/ (totalG_with_GG[i].N + minTperN.Sum(index => (q_lastenList[index].Force[i].N)));
-                var max = 
-                    (totalG_with_GG[i].T + maxTperN.Sum(index => (q_lastenList[index].Force[i].T))) / (totalG_with_GG[i].N + maxTperN.Sum(index => (q_lastenList[index].Force[i].N)));
-                if (Math.Abs(min) > Math.Abs(max))
+                fullCombo.AddRange(selected);
+
+                double sumN = fullCombo.Sum(lc => lc.Force[i].N);
+                double sumT = fullCombo.Sum(lc => lc.Force[i].T);
+
+                if (sumN != 0)
                 {
-                    maxCombo.Add(minTperN);
-
-                    Ergebnis_new_sum[i] = Math.Abs(min);
+                    double ratio = Math.Abs(sumT / sumN);
+                    if (ratio > bestRatio)
+                    {
+                        bestRatio = ratio;
+                        bestCombo = new List<MyLoadcase>(fullCombo);
+                    }
                 }
-                else
-                {
-                    maxCombo.Add(maxTperN);
-                    Ergebnis_new_sum[i] = Math.Abs(max);
-                }
-
             }
 
-            return maxCombo
-             .Select(innerList => innerList.ToArray())
-             .ToList();
+            return (bestCombo, bestRatio);
+        }
+
+        public List<int[]> CalculatedExcelRow_New()
+        {
+            List<List<MyLoadcase>> BestCombo_new2 = new List<List<MyLoadcase>>();
+            for (int i = 0; i < 2; i++)
+            {
+                var Ergebnis = FindBestCombination(loadcaseList, i);
+                BestCombo_new2.Add(Ergebnis.BestCombo);
+                Bestratio_new2[i] = (Ergebnis.BestRatio);
+            }
+            //List<int[]> Ergebnis_new2 = BestCombo_new2
+            return BestCombo_new2
+ .Select(combo => combo
+ .Where(lc => lc.QIndex > -1)
+ .Select(lc => lc.QIndex)
+ .ToArray())
+ .ToList();
         }
         public void CompareExcerRow()
         {
+            
             List<int[]> Ergebnis_trad = new List<int[]>(CalculatedExcelRow_Traditional());
             List<int[]> Ergebnis_new = new List<int[]>(CalculatedExcelRow_New());
 
@@ -592,7 +583,7 @@ namespace Verrollungsnachweis
 
             if (areEqual)
             {
-                RowNumberInExcel = new List<int[]>(CalculatedExcelRow_New());
+                RowNumberInExcel = new List<int[]>(Ergebnis_new);
                 return;
             }
             else
@@ -605,20 +596,16 @@ namespace Verrollungsnachweis
                 {
                     string trad_str="";
                     string neu_str="";
-                    double trad_doubl = 0, neu_doubl = 0;
-
 
                     foreach (var lf in q_lastenList)
                     { 
                         if (Ergebnis_trad[i].Contains(lf.QIndex))
                         {
                             trad_str = trad_str + "+"+ lf.Number ;
-                            trad_doubl += lf.Force[i].TperN;
                         }
                         if (Ergebnis_new[i].Contains(lf.QIndex))
                         {
                             neu_str = neu_str + "+" + lf.Number;
-                            neu_doubl += lf.Force[i].TperN;
                         }
                     }
                     Ergebnis_trad_str[i] = trad_str;
@@ -627,17 +614,17 @@ namespace Verrollungsnachweis
                 }
                 MessageBox.Show("Die Ergebnisse der beiden Methoden sind unterschiedlich.\n" +
                     "Vorne:\n       Methode1: "+Ergebnis_trad_str[0]+"\n       Methode2: " + Ergebnis_new_str[0]+
-                    "\n            T/N=(1:)" + Math.Round(Ergebnis_trad_sum[0], 3) + "<=>(2:)"+ Math.Round(Ergebnis_new_sum[0], 3) +
+                    "\n            T/N=(M1:)" + Math.Round(Ergebnis_trad_sum[0], 3) + "<=>(M2:)"+ Math.Round(Bestratio_new2[0], 3) +
                     "\nHinten:\n        Methode1: "+Ergebnis_trad_str[1]+"\n       Methode2: " + Ergebnis_new_str[1] +
-                    "\n            T/N=(1:)" + Math.Round(Ergebnis_trad_sum[1],3) + "<=>(2:)" + Math.Round(Ergebnis_new_sum[1],3)
+                    "\n            T/N=(M1:)" + Math.Round(Ergebnis_trad_sum[1],3) + "<=>(M2:)" + Math.Round(Bestratio_new2[1],3)
                     , "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                if (Ergebnis_new_sum[0] > Ergebnis_trad_sum[0] || Ergebnis_new_sum[1] > Ergebnis_trad_sum[1])
+                if (Bestratio_new2[0] > Ergebnis_trad_sum[0] || Bestratio_new2[1] > Ergebnis_trad_sum[1])
                 {
-                    RowNumberInExcel = new List<int[]>(CalculatedExcelRow_New());
+                    RowNumberInExcel = new List<int[]>(Ergebnis_new);
                 }
                 else
                 {
-                    RowNumberInExcel = new List<int[]>(CalculatedExcelRow_Traditional());
+                    RowNumberInExcel = new List<int[]>(Ergebnis_trad);
                 }
             }
             
@@ -875,6 +862,10 @@ namespace Verrollungsnachweis
                         totalG_with_GG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
                         g_lastenList = g_lastenList.Where(x => x.Index != gegengewichtIndex).ToList();
                         GGforce = forceCalc_for_Gegengewicht.CalculateForces(Gegengewicht); //=> to Export
+                    }
+                    else
+                    {
+                        totalG_with_GG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
                     }
 
                     totalG = forceCalc.CalculateTotalForces(g_lastenList).ToList();

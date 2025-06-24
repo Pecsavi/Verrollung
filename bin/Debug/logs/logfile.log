@@ -192,3 +192,66 @@
 2025-06-22 17:40:46.2436|INFO|Verrollungsnachweis.Form1|Application started
 2025-06-22 17:40:46.3996|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
 2025-06-22 17:40:46.5026|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:31:24.7134|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 20:31:24.9270|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:31:25.0190|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:31:48.6673|ERROR|Verrollungsnachweis.HelperFunc|Get_ForcesThe model is unstable in node No. 253. Free movement in X -direction.
+2025-06-23 20:33:00.3231|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 20:33:00.5612|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:33:00.6486|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:35:41.7824|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 20:35:41.9664|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:35:42.0414|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:41:36.6902|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 20:41:36.9260|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 20:41:37.0209|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 21:06:44.4511|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:06:47.1752|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-23 21:07:02.3766|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:07:04.7846|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-23 21:07:51.4525|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:07:59.2943|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-23 21:09:12.5360|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:10:15.8614|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:10:52.4681|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-23 21:11:25.4801|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:11:38.3974|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 21:11:42.7856|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 21:24:16.6656|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:24:17.1999|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 21:24:17.3923|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 21:39:15.2662|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 21:39:15.5405|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 21:39:15.7344|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 23:45:24.3532|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-23 23:45:24.6112|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-23 23:45:24.7982|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 21:18:49.8030|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 21:18:50.3368|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 21:18:50.5650|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:04:45.1638|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 22:04:45.4501|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:04:45.6290|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:08:36.8016|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 22:08:37.0633|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:08:37.2367|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:09:55.1738|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 22:09:55.4357|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:09:55.6347|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:12:43.9284|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 22:12:44.2047|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:12:44.4134|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:22:50.1022|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 22:22:50.3758|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:22:50.5594|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:24:04.9859|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 22:24:05.3063|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 22:24:05.4865|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
