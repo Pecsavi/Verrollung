@@ -103,6 +103,8 @@ G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollu
 G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.exe
 G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.pdb
 G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.exe.config
+G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.Form1.resources
+G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.csproj.GenerateResource.cache
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\Verrollungsnachweis.exe.config
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\Verrollungsnachweis.exe
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\Verrollungsnachweis.pdb
@@ -135,11 +137,9 @@ G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\System.Memory.xm
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\System.Numerics.Vectors.xml
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.csproj.AssemblyReference.cache
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.Form1.resources
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.csproj.GenerateResource.cache
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.csproj.CoreCompileInputs.cache
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollu.9F359F2A.Up2Date
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.exe
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.pdb
-G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.Form1.resources
-G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.csproj.GenerateResource.cache
-G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.Form1.resources
-G:\Egyéb számítógépek\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.csproj.GenerateResource.cache

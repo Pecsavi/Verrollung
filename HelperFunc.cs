@@ -3,6 +3,7 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 namespace Verrollungsnachweis
 {
@@ -25,8 +26,7 @@ namespace Verrollungsnachweis
     {
         private double _n;
         private double _t;
-        private double _tpern;
-        private bool nSet = false, tSet = false;
+        
         public double G { get; set; }
         public double N
         {
@@ -34,8 +34,6 @@ namespace Verrollungsnachweis
             set
             {
                 _n = value;
-                nSet = true;
-                //if (tSet) Update_tpern();
             }
         }
         public double T
@@ -44,19 +42,10 @@ namespace Verrollungsnachweis
             set
             {
                 _t = value;
-                tSet = true;
-                //if (nSet) Update_tpern();
             }
         }
-        //public double TperN => _tpern;
         public MyForce() { }
-        /*void Update_tpern()
-        {
-            if (Math.Abs(T) > 10e-6 && N > 10e-6) _tpern = _t / _n;
-            else if (Math.Abs(T) < 10e-6) _tpern = 0;
-            else if (N <0) _tpern = 1;
-            else if (N < 10e-6) _tpern = 2 * _t;
-        }*/
+        
     }
     public class MyLoadcase
     {
@@ -112,6 +101,7 @@ namespace Verrollungsnachweis
         public List<MyLoadcase> g_lastenList = new List<MyLoadcase>();
         public List<MyLoadcase> q_lastenList = new List<MyLoadcase>();
         public List<MyLoadcase> gq_lastenList = new List<MyLoadcase>();
+        public List<MyLoadcase> g_lastenList_withoutGG = new List<MyLoadcase>();
         public MyLoadcase Gegengewicht;
         public List<MyForce> totalG = new List<MyForce>();
         public List<MyForce> totalG_with_GG = new List<MyForce>();
@@ -142,54 +132,60 @@ namespace Verrollungsnachweis
                 }
             }
         }
-
-
         public void GetConnect()
         {
             try
             {
                 (app, model) = connectionManager.GetConnect();
-                connectionManager.GetConnect();
                 modelName = model.GetName();
             }
-            catch (RstabConnectionException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.ErrorType, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(ex.Message + ":  " + ex.ErrorType + "  " + ex.InnerException?.StackTrace);
-                ConnectionManager.Kill_Background_Process("RSTAB8");
-                System.Windows.Forms.Application.Restart();
-                TheEnd();
+                MyExceptionHandler(ex);
+                
             }
 
+        }
+        internal void MyExceptionHandler(Exception ex, [CallerMemberName] string callerName = "")
+        {
+            if (ex is RstabConnectionException rstabEx)
+            {
+                MessageBox.Show(callerName + " - "+rstabEx.Message , "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(callerName + " - " + rstabEx.Message + "  " + rstabEx.InnerException?.StackTrace);
+            }
+
+            else if (ex.InnerException is RstabConnectionException rc && rc.ErrorType == ConnectionErrorType.ModelNotActive)
+            {
+                DialogResult result = MessageBox.Show($"Keine Verbindung zum Model:{modelName}.rs8\n Hast du ihn zugemacht?\n Wenn 'JA', ich muss auch zu. Wenn 'NEIN', setze das Modell in das aktive Fenster!", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+            else if (ex.Message=="nur 1,0-fach Lastfalkombination ist akzeptable")
+            {
+                MessageBox.Show("nur 1,0-fach Lastfalkombination ist akzeptable", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(callerName + " - " + ex.Message, "Lastkombination with safetyfactor choosed");
+                return;
+            }
+           
+            else
+            {
+                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(callerName + " - " + ex.Message, "Unhandled exception in HelperFunc");
+
+            }
+            ConnectionManager.Kill_Background_Process("RSTAB8");
+            System.Windows.Forms.Application.Restart();
+            TheEnd();
         }
         public bool IsConnected()
         {
             try
             {
                 return connectionManager.IsConnected();
-
             }
             catch (RstabConnectionException ex)
             {
-                if (ex.InnerException is RstabConnectionException rc && rc.ErrorType == ConnectionErrorType.ModelNotActive)
-                {
-
-                    DialogResult result = MessageBox.Show($"Keine Verbindung zum Model:{modelName}.rs8\n Hast du ihn zugemacht?\n Wenn 'JA', ich muss auch zu. Wenn 'NEIN', setze das Modell in das aktive Fenster!", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.No)
-                    {
-                        return false;
-                    }
-                }
-
-                MessageBox.Show(ex.Message + ex.ErrorType, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(ex.Message + ":  " + ex.ErrorType + "  " + ex.InnerException?.StackTrace);
-                ConnectionManager.Kill_Background_Process("RSTAB8");
-                System.Windows.Forms.Application.Restart();
-                TheEnd();
-
+                { MyExceptionHandler(ex); }
+                return false;
             }
-            return false;
-
         }
 
         public List<string> GetEKName()
@@ -199,7 +195,7 @@ namespace Verrollungsnachweis
             ResultCombination[] loadings = null;
             try
             {
-
+                if (!IsConnected()) { throw new Exception(); }
                 connectionManager.LockAndUnlockLicense(() =>
                 {
                     model = app.GetActiveModel();
@@ -219,7 +215,7 @@ namespace Verrollungsnachweis
             }
             catch (Exception e)
             {
-                
+                //Ez még nem jól  van kezelve, itt vizsgáld hogy a loadkombináció tényleg 1,0-szeres-e
                 logger.Error(e, "GetEKName() failed");
                 return null;
             }
@@ -264,11 +260,11 @@ namespace Verrollungsnachweis
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                TheEnd();
-                return -1;
+                MyExceptionHandler(ex);
             }
+            
            
             return -1;
         }
@@ -316,11 +312,11 @@ namespace Verrollungsnachweis
                 selected = new List<int>(StringToIntList(objects));
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                TheEnd();
-                return false;
+                MyExceptionHandler(ex);
             }
+            return false;
         }
         public List<int> StringToIntList(string textT)
         {
@@ -424,11 +420,12 @@ namespace Verrollungsnachweis
                 });
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                TheEnd();
-                return false;
+                MyExceptionHandler(ex);
+
             }
+            return false;
         }
         public int FindIndex(Member[] tomb, int Nr)
         {
@@ -456,8 +453,8 @@ namespace Verrollungsnachweis
            
             for (int i = 0; i < 2; i++)
             {
-                double maxTangential = totalG_with_GG[i].T;
-                double maxNormal = totalG_with_GG[i].N;
+                double maxTangential = totalG[i].T;
+                double maxNormal = totalG[i].N;
                 ;
 
                 if (Verrollung_TKs.Count != 2)
@@ -736,9 +733,9 @@ namespace Verrollungsnachweis
                     deg.Add(Math.Atan(Math.Abs((Pont1.Y - Pont2.Y) / (Pont1.Z - Pont2.Z))) * 180 / Math.PI);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                TheEnd();
+                MyExceptionHandler(ex);
             }
         }
         /// <summary>
@@ -747,36 +744,42 @@ namespace Verrollungsnachweis
         /// </summary>
         /// <param name="ResKomb"></param>
         /// 
-        private void G_Q_Lasten(int ResKomb)
+        private bool G_Q_Lasten(int ResKomb)
         {
-            app.LockLicense();
-            model = app.GetActiveModel();
+            
+                
             int qindex = -1;
 
             try
             {
-
+                if (!IsConnected()) { return false; }
+                connectionManager.LockAndUnlockLicense(() =>
+                {
                 resultComb = model.GetLoads().GetResultCombination(ResKomb, ItemAt.AtNo).GetData();
+                });
                 allLFNo_in_LC = resultComb.Definition.Replace(" ", "").Split(new string[] { "or", "+" }, System.StringSplitOptions.RemoveEmptyEntries);
                 string[] allLFNo_QisGroupped = resultComb.Definition.Replace(" ", "").Split(new string[] { "+" }, System.StringSplitOptions.RemoveEmptyEntries);
                 foreach (var item in allLFNo_QisGroupped)
                 {
+
+                    if (!string.IsNullOrEmpty(item) && Char.IsDigit(item[0]))
+                        throw new Exception ("nur 1,0-fach Lastfalkombination ist akzeptable");
                     if (item.Contains("/p"))
                     { continue; }
                     all_Q_LFNo_inGroups.Add(item.Split(new string[] { "or" }, System.StringSplitOptions.RemoveEmptyEntries));
                 }
-                
+
                 foreach (var item in allLFNo_in_LC)
                 {
                     foreach (var lf in loadcaseList)
                     {
-                        
+
                         if (item.Contains("/p"))
                         {
                             if (lf.Number == item.Replace("/p", ""))
                             {
                                 lf.LoadType = "G";
-                               
+
                                 g_lastenList.Add(lf);
                             }
                         }
@@ -795,15 +798,13 @@ namespace Verrollungsnachweis
 
                 gq_lastenList.AddRange(g_lastenList);
                 gq_lastenList.AddRange(q_lastenList);
-                app.UnlockLicense();
+                return true;
+
             }
-            catch (RstabConnectionException ex)
-            {
-                app.UnlockLicense();
-                MessageBox.Show("nur 1,0-fach Lastfalkombination ist akzeptable");
-                logger.Error(ex.Message + ":  " + ex.ErrorType + "  " + ex.InnerException?.StackTrace);
-                //HandleStateChange("nur 1,0-fach Lastfalkombination ist akzeptable");
-                TheEnd();
+            catch (Exception ex)
+            {                
+                MyExceptionHandler(ex);
+                return false;
             }
         }
         /// <summary>
@@ -811,18 +812,23 @@ namespace Verrollungsnachweis
         /// Key: 0 (index, starting from 0), Value: [LC1, Eigenweight]
         /// </summary>
         /// <param name="ResKomb"></param>
-        public void Lastfaelle(int ResKomb)
+        public bool Lastfaelle(int ResKomb)
         {
-            app.LockLicense();
-            model = app.GetActiveModel();
-            LoadCase[] loadsLCo = model.GetLoads().GetLoadCases();
+            loadcaseList = new List<MyLoadcase>();
+            LoadCase[] loadsLCo = null;
+            if (!IsConnected()) { return false; }
+            connectionManager.LockAndUnlockLicense(() =>
+            {
+                loadsLCo = model.GetLoads().GetLoadCases();
+            });
             int SummLF = loadsLCo.Count();
             for (int i = 0; i < loadsLCo.Count(); i++)
             {
                 loadcaseList.Add(new MyLoadcase(i, loadCaseByLanguage + loadsLCo[i].Loading.No.ToString(), loadsLCo[i].Description));
             }
-            G_Q_Lasten(ResKomb);
-            app.UnlockLicense();
+            if(!G_Q_Lasten(ResKomb)) return false;
+            return true;
+
         }
         /// <summary>
         /// Collects the support and rod forces from each load case.
@@ -832,43 +838,41 @@ namespace Verrollungsnachweis
         {
             try
             {
-
+                ErrorInfo[] errorInfos = null;
+                LoadCase[] loadsLCo=null;
+                ICalculation calculation=null;
+                ForceCalculator forceCalc = null;
+                ForceCalculator forceCalc_for_Gegengewicht = null;
+                if (!IsConnected()) return;
                 connectionManager.LockAndUnlockLicense(() =>
                 {
-                    model = app.GetActiveModel();
-                    ICalculation calculation = model.GetCalculation();
-
-
-                    var forceCalc = new ForceCalculator(model, calculation, angledRod, tangentialSupport, verticalSupport, supportRotateDirection);
-                    var forceCalc_for_Gegengewicht = new ForceCalculator(model, calculation, angledRod, tangentialSupport, verticalSupport, supportRotateDirection); ;
-                    ErrorInfo[] errorInfos = calculation.Calculate(LoadingType.LoadCaseType, 0);
-                    LoadCase[] loadsLCo = model.GetLoads().GetLoadCases();
-                    if (errorInfos.Length != 0)
+                    calculation = model.GetCalculation();
+                    forceCalc = new ForceCalculator(model, calculation, angledRod, tangentialSupport, verticalSupport, supportRotateDirection);
+                    forceCalc_for_Gegengewicht = new ForceCalculator(model, calculation, angledRod, tangentialSupport, verticalSupport, supportRotateDirection); ;
+                    errorInfos = calculation.Calculate(LoadingType.LoadCaseType, 0);
+                    loadsLCo = model.GetLoads().GetLoadCases();
+                });
+                if (errorInfos.Length != 0)
                     {
-                        logger.Error("Get_Forces" + errorInfos[0].Description);
-                    }
+                    throw new Exception("Get_Forces" + errorInfos[0].Description);
+                }
 
                     foreach (var lc in gq_lastenList)
                     {
-
                         var forces = forceCalc.CalculateForces(lc);
                         lc.Force.AddRange(forces);
-
                     }
 
                     if (gegengewichtIndex.HasValue)
                     {
-                        g_lastenList = g_lastenList.ToList();
-                        totalG_with_GG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
-                        g_lastenList = g_lastenList.Where(x => x.Index != gegengewichtIndex).ToList();
+                        g_lastenList_withoutGG = g_lastenList.Where(x => x.Index != gegengewichtIndex).ToList();
                         GGforce = forceCalc_for_Gegengewicht.CalculateForces(Gegengewicht); //=> to Export
+                        totalG = forceCalc.CalculateTotalForces(g_lastenList_withoutGG).ToList();
                     }
                     else
                     {
-                        totalG_with_GG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
+                        totalG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
                     }
-
-                    totalG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
 
                     normal_Forces.Add(new double[] { totalG[0].N, totalG[1].N });
                     tangential_Forces.Add(new double[] { totalG[0].T, totalG[1].T });
@@ -879,14 +883,11 @@ namespace Verrollungsnachweis
                         tangential_Forces.Add(new double[] { ql.Force[0].T, ql.Force[1].T });
                         vertikal_Forces.Add(new double[] { ql.Force[0].G, ql.Force[1].G });
                     }
-
-                });
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MyExceptionHandler(ex);
 
-                TheEnd();
             }
         }
         /// <summary>
@@ -900,56 +901,59 @@ namespace Verrollungsnachweis
         {
             try
             {
-                app.LockLicense();
-                model = app.GetActiveModel();
-                ICalculation calculation = model.GetCalculation();
-                ResultCombination[] loadsLRe = model.GetLoads().GetResultCombinations();
-                ErrorInfo[] errorInfos = calculation.Calculate(LoadingType.ResultCombinationType, Ek);
-                if (errorInfos.Length != 0)
+                if (!IsConnected()) return;
+                connectionManager.LockAndUnlockLicense(() =>
                 {
-                    app.UnlockLicense();
-                    logger.Error("Verrollung_MaxTKs" + errorInfos[0].Description);
-                }
-                IResults results = calculation.GetResults(LoadingType.ResultCombinationType, Ek);
-                int n = AuflagerNr.Count;
-                NodalSupportForces[] dataf;
-                int counter = 0;
-                foreach (var item in AuflagerNr)
-                {
-                    double[] Support_Force = new double[2];
-                    counter = AuflagerNr.ToList().IndexOf(item);
-                    dataf = results.GetNodalExtremeSupportForces(item, ItemAt.AtNo, true);
-                    int absmax, max = 0, min = 1;
-                    for (int i = 0; i < dataf.Length; i++)
+
+                    ICalculation calculation = model.GetCalculation();
+                    ResultCombination[] loadsLRe = model.GetLoads().GetResultCombinations();
+                    ErrorInfo[] errorInfos = calculation.Calculate(LoadingType.ResultCombinationType, Ek);
+                    if (errorInfos.Length != 0)
                     {
-                        if (dataf[i].Type == ResultsValueType.MaximumAlongZ)
+                      
+                        throw new Exception("Verrollung_MaxTKs" + errorInfos[0].Description);
+                    }
+                    IResults results = calculation.GetResults(LoadingType.ResultCombinationType, Ek);
+                    int n = AuflagerNr.Count;
+                    NodalSupportForces[] dataf;
+                    int counter = 0;
+                    foreach (var item in AuflagerNr)
+                    {
+                        double[] Support_Force = new double[2];
+                        counter = AuflagerNr.ToList().IndexOf(item);
+                        dataf = results.GetNodalExtremeSupportForces(item, ItemAt.AtNo, true);
+                        int absmax, max = 0, min = 1;
+                        for (int i = 0; i < dataf.Length; i++)
                         {
-                            Support_Force[0] = dataf[i].Forces.Z / 1000;
-                            max = i;
+                            if (dataf[i].Type == ResultsValueType.MaximumAlongZ)
+                            {
+                                Support_Force[0] = dataf[i].Forces.Z / 1000;
+                                max = i;
+                            }
+                            if (dataf[i].Type == ResultsValueType.MinimumAlongZ)
+                            {
+                                Support_Force[1] = dataf[i].Forces.Z / 1000;
+                                min = i;
+                            }
                         }
-                        if (dataf[i].Type == ResultsValueType.MinimumAlongZ)
+                        if (Math.Abs(Support_Force[0]) > Math.Abs(Support_Force[1]))
                         {
-                            Support_Force[1] = dataf[i].Forces.Z / 1000;
-                            min = i;
+                            absmax = max;
                         }
+                        else
+                        {
+                            absmax = min;
+                        }
+                        int[] relevantTK = (StringToIntList(dataf[absmax].CorrespondingLoading.Remove(0, 3))).ToArray();
+                        Verrollung_TKs.Add(relevantTK);
+                        MaxTangentialkraft[counter] = Support_Force[absmax];
                     }
-                    if (Math.Abs(Support_Force[0]) > Math.Abs(Support_Force[1]))
-                    {
-                        absmax = max;
-                    }
-                    else
-                    {
-                        absmax = min;
-                    }
-                    int[] relevantTK = (StringToIntList(dataf[absmax].CorrespondingLoading.Remove(0, 3))).ToArray();
-                    Verrollung_TKs.Add(relevantTK);
-                    MaxTangentialkraft[counter] = Support_Force[absmax];
-                }
-                app.UnlockLicense();
+                });
+                
             }
             catch
             {
-                TheEnd();
+                MyExceptionHandler(new Exception("Verrollung_MaxTKs() failed"));
 
             }
         }

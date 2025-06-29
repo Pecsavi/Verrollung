@@ -84,8 +84,6 @@ namespace Verrollungsnachweis
                 Height = 40,
                 Font = new Font(FontFamily.GenericSansSerif, 11)
 
-                //DialogResult = DialogResult.OK
-
             };
             btnConfirm.Click += (s, e) =>
             {
@@ -117,7 +115,6 @@ namespace Verrollungsnachweis
             {
                 Text = "Abbrechen",
                 Visible = false, // nem kell megjeleníteni, csak a CancelButton-hoz kell
-                //DialogResult = DialogResult.Cancel
             };
             
                 this.Controls.Add(btnCancel);

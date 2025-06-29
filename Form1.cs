@@ -73,7 +73,7 @@ namespace Verrollungsnachweis
             
             if (!Rstabfv.IsConnected())  return ;
             Rstabfv._case = _Case;
-            Rstabfv.Lastfaelle(_selectedEk);
+            if (!Rstabfv.Lastfaelle(_selectedEk)) {   return; };
             CheckConterweight();
             if (Rstabfv.SelectElement(Elem.linies))
             {
@@ -82,8 +82,6 @@ namespace Verrollungsnachweis
                 Rstabfv.Get_Forces();
                 Rstabfv.Verrollung_MaxTKs(Rstabfv.tangentialSupport, _selectedEk);
                 Rstabfv.CompareExcerRow();
-                //Rstabfv.CalculatedExcelRow_New();
-                //Rstabfv.CalculatedExcelRow_Traditional();
                 Export excel = new Export(Rstabfv);
                 excel.ExportToXls();
                 Rstabfv.TheEnd();

@@ -255,3 +255,180 @@
 2025-06-24 22:24:04.9859|INFO|Verrollungsnachweis.Form1|Application started
 2025-06-24 22:24:05.3063|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
 2025-06-24 22:24:05.4865|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:15:41.2393|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:15:47.2163|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:16:14.6047|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:16:19.6318|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:16:58.3104|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:17:02.3413|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:18:12.1485|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:18:22.4888|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:18:40.5848|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:18:43.7932|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:20:05.9708|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:20:08.5594|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:20:26.7993|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:21:35.4755|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:21:45.4538|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:23:09.8647|ERROR|Verrollungsnachweis.HelperFunc|Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.:  NoApplication     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-24 23:26:44.1913|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:26:48.5943|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:26:48.6795|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:27:23.1344|INFO|Verrollungsnachweis.Form1|Form Closing
+2025-06-24 23:27:46.1462|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:27:46.3704|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:27:46.4879|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:29:20.5585|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:29:20.7801|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:29:20.9007|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:32:48.1072|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:32:48.3244|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:32:48.4251|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:34:18.1421|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:34:18.3510|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:34:18.5207|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:54:10.7823|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:54:11.0030|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:54:11.1043|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:55:07.7002|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:55:07.9343|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:55:08.0453|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:58:35.0381|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-24 23:58:35.2546|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-24 23:58:35.3508|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:05:34.4892|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:05:34.6995|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:05:34.8147|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:07:03.2993|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:07:03.5187|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:07:03.6199|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:09:01.7226|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:09:01.9376|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:09:02.0217|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:10:01.2029|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:10:01.4271|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:10:01.5373|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:46:11.2829|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:46:11.4977|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:46:11.5645|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:47:28.2961|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:47:28.4801|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:47:28.5899|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:49:11.3410|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 00:49:11.5725|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 00:49:11.7995|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 22:12:40.1983|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:12:40.4151|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 22:12:40.4974|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-25 22:15:49.9059|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:15:56.9446|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:17:13.5988|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:18:36.7644|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:20:31.0002|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:21:25.5768|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:22:30.4142|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:24:31.1350|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:24:33.0738|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:25:22.4930|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:25:29.8237|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:25:59.3840|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:26:55.6158|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:28:28.8358|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:28:54.7870|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:29:25.8670|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:30:17.6601|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:31:26.0025|ERROR|Verrollungsnachweis.HelperFunc|Ein unbekannter Fehler ist aufgetreten:   Model was not found:  UnknownError     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0()
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect()
+2025-06-25 22:31:28.8060|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:33:47.4362|ERROR|Verrollungsnachweis.HelperFunc|GetEKName() failed
+2025-06-25 22:33:50.4056|ERROR|Verrollungsnachweis.Form1|Error during initialization
+2025-06-25 22:33:53.3679|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:34:24.4753|ERROR|Verrollungsnachweis.HelperFunc|GetConnect - Ein unbekannter Fehler ist aufgetreten:   Model was not found     bei Dlubal.RSTAB8.IApplication.GetActiveModel()
+   bei Verrollungsnachweis.ConnectionManager.<GetConnect>b__3_0() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 51.
+   bei Verrollungsnachweis.ConnectionManager.LockAndUnlockLicense(Action action) in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 126.
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 49.
+2025-06-25 22:34:26.5162|ERROR|Verrollungsnachweis.HelperFunc|GetConnect - Ein unbekannter Fehler ist aufgetreten:   Model was not found
+2025-06-25 22:34:33.3516|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:34:51.3319|ERROR|Verrollungsnachweis.HelperFunc|GetConnect - Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-25 22:35:09.9218|ERROR|Verrollungsnachweis.HelperFunc|GetConnect - Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.
+2025-06-25 22:37:04.2121|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-25 22:37:04.4464|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 21:40:15.9156|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 21:40:37.4498|ERROR|Verrollungsnachweis.HelperFunc|GetConnect - Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
+   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
+   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
+2025-06-26 21:41:02.4769|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 21:41:02.7113|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 21:42:29.5651|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 21:42:29.6151|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 21:43:00.4923|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 21:43:40.7916|INFO|Verrollungsnachweis.Form1|Form Closing
+2025-06-26 22:04:24.3553|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 22:04:24.4887|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 22:04:35.5116|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 22:04:49.5216|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 22:05:46.2178|INFO|Verrollungsnachweis.Form1|Form Closing
+2025-06-26 22:14:44.5011|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 22:14:44.6345|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 22:14:56.5123|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 22:15:05.1274|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 22:15:36.8312|INFO|Verrollungsnachweis.Form1|Form Closing
+2025-06-26 22:20:23.2993|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 22:20:23.4328|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 22:20:28.5790|INFO|Verrollungsnachweis.Form1|Form Closing
+2025-06-26 22:20:38.4440|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 22:20:38.5690|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 22:22:42.8783|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 22:22:53.3826|INFO|Verrollungsnachweis.Form1|Form Closing
+2025-06-26 22:23:14.6000|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-26 22:23:14.7501|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-26 22:23:23.3740|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-26 22:23:34.0906|ERROR|Verrollungsnachweis.HelperFunc|G_Q_Lasten - nur 1,0-fach Lastfalkombination ist akzeptable
+2025-06-27 07:17:27.6632|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-27 07:17:27.7902|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-06-27 07:19:14.1258|INFO|Verrollungsnachweis.Form1|Application started
+2025-06-27 07:19:14.2486|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
