@@ -2,10 +2,15 @@
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
+using System.IO;
+using NLog;
+
 namespace Verrollungsnachweis
 {
+    
     class Export
     {
+       
         string StartDir = Application.StartupPath;
         bool english=false;
         Excel.Range excelRange = null;
@@ -32,13 +37,26 @@ namespace Verrollungsnachweis
                 excelApp = new Excel.Application();
                 try
                 {
-                    string myPath = StartDir + @".\Verrollung.xltx";
+
+                    string myPath = Path.Combine(StartDir, "Datas", "Verrollung.xltx");
+
+                    if (!File.Exists(myPath))
+                    {
+                        MessageBox.Show("Template file not found: " + myPath);
+                        LoggerService.Error("Template file not found: " + myPath);
+
+                        return;
+                    }
+
+   
                     excelApp.Workbooks.Open(myPath);
                 }
                 catch (Exception)
                 {
                     StartDir = Application.StartupPath;
-                    string myPath = StartDir + @".\Verrollung.xltx";
+
+                    string myPath = Path.Combine(StartDir, "Datas", "Verrollung.xltx");
+
                     excelApp.Workbooks.Open(myPath);
                 }
                 excelApp.ScreenUpdating = false; // Turn off updating to make it faster
@@ -86,17 +104,15 @@ namespace Verrollungsnachweis
                 worksheet.Cells[1, 10] = (RstabFv.supportRotateDirection); // D16
                 #endregion
                 #region Gegengewicht
-                // Ha van külön kezelt Gegengewicht, írjuk be a dedikált sorokba (B16 és B29 → D16/E16 és D29/E29)
                 if (RstabFv.GegengewichtIndex.HasValue)
                 {
-                    // Elöl (vorn) → sor 16
                     worksheet.Cells[16, 4] = Math.Round(RstabFv.GGforce[0].N, 2); // D16
                     worksheet.Cells[16, 5] = Math.Round(RstabFv.GGforce[0].T, 2); // E16
                     worksheet.Cells[16, 6].FormulaR1C1 = worksheet.Cells[14, 6].FormulaR1C1;
                     worksheet.Cells[16, 7].FormulaR1C1 = worksheet.Cells[14, 7].FormulaR1C1;
                     worksheet.Cells[16, 3].FormulaR1C1 = worksheet.Cells[14, 3].FormulaR1C1;
 
-                    // Hátul (hinten) → sor 29
+                  
                     worksheet.Cells[29, 4] = Math.Round(RstabFv.GGforce[1].N, 2); // D29
                     worksheet.Cells[29, 5] = Math.Round(RstabFv.GGforce[1].T, 2); // E29
                     worksheet.Cells[29, 6].FormulaR1C1 = worksheet.Cells[14, 6].FormulaR1C1;

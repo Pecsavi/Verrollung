@@ -143,3 +143,4 @@ G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachw
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollu.9F359F2A.Up2Date
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.exe
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.pdb
+C:\Users\peren\source\repos\Verrollungsnachweis_02\bin\Debug\Datas\Verrollung.xltx

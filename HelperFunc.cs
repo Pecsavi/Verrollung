@@ -83,7 +83,7 @@ namespace Verrollungsnachweis
         private HelperFunc() { } 
         public static HelperFunc Instance => _instance.Value;
 
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+     
         private readonly ConnectionManager connectionManager = new ConnectionManager();
         IApplication app = null;
         IModel model = null;
@@ -151,7 +151,7 @@ namespace Verrollungsnachweis
             if (ex is RstabConnectionException rstabEx)
             {
                 MessageBox.Show(callerName + " - "+rstabEx.Message , "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(callerName + " - " + rstabEx.Message + "  " + rstabEx.InnerException?.StackTrace);
+                LoggerService.Error(callerName + " - " + rstabEx.Message + "  " + rstabEx.InnerException?.StackTrace);
             }
 
             else if (ex.InnerException is RstabConnectionException rc && rc.ErrorType == ConnectionErrorType.ModelNotActive)
@@ -161,14 +161,14 @@ namespace Verrollungsnachweis
             else if (ex.Message=="nur 1,0-fach Lastfalkombination ist akzeptable")
             {
                 MessageBox.Show("nur 1,0-fach Lastfalkombination ist akzeptable", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(callerName + " - " + ex.Message, "Lastkombination with safetyfactor choosed");
+                LoggerService.Error(callerName + " - " + ex.Message + ": Lastkombination with safetyfactor choosed");
                 return;
             }
            
             else
             {
                 MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(callerName + " - " + ex.Message, "Unhandled exception in HelperFunc");
+                LoggerService.Error(callerName + " - " + ex.Message + ": Unhandled exception in HelperFunc");
 
             }
             ConnectionManager.Kill_Background_Process("RSTAB8");
@@ -216,7 +216,7 @@ namespace Verrollungsnachweis
             catch (Exception e)
             {
                 //Ez még nem jól  van kezelve, itt vizsgáld hogy a loadkombináció tényleg 1,0-szeres-e
-                logger.Error(e, "GetEKName() failed");
+                LoggerService.Error(e, "GetEKName() failed");
                 return null;
             }
         }
@@ -453,13 +453,13 @@ namespace Verrollungsnachweis
            
             for (int i = 0; i < 2; i++)
             {
-                double maxTangential = totalG[i].T;
-                double maxNormal = totalG[i].N;
+                double maxTangential = totalG_with_GG[i].T;
+                double maxNormal = totalG_with_GG[i].N;
                 ;
 
                 if (Verrollung_TKs.Count != 2)
-                {  
-                    logger.Error("CalculatedExcelRow2(): Verrollung_TKs.Count != 2 ");
+                {
+                    LoggerService.Error("CalculatedExcelRow2(): Verrollung_TKs.Count != 2 ");
                     MessageBox.Show("Aufgrund der Struktur der Tabelle kann das Programm nur 4 Fahrwerk berücksichtigen. ");
                     TheEnd();
                     return null;
@@ -614,7 +614,7 @@ namespace Verrollungsnachweis
                     "\n            T/N=(M1:)" + Math.Round(Ergebnis_trad_sum[0], 3) + "<=>(M2:)"+ Math.Round(Bestratio_new2[0], 3) +
                     "\nHinten:\n        Methode1: "+Ergebnis_trad_str[1]+"\n       Methode2: " + Ergebnis_new_str[1] +
                     "\n            T/N=(M1:)" + Math.Round(Ergebnis_trad_sum[1],3) + "<=>(M2:)" + Math.Round(Bestratio_new2[1],3)
-                    , "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    , "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (Bestratio_new2[0] > Ergebnis_trad_sum[0] || Bestratio_new2[1] > Ergebnis_trad_sum[1])
                 {
                     RowNumberInExcel = new List<int[]>(Ergebnis_new);
@@ -862,16 +862,17 @@ namespace Verrollungsnachweis
                         var forces = forceCalc.CalculateForces(lc);
                         lc.Force.AddRange(forces);
                     }
-
-                    if (gegengewichtIndex.HasValue)
+                totalG_with_GG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
+                if (gegengewichtIndex.HasValue)
                     {
                         g_lastenList_withoutGG = g_lastenList.Where(x => x.Index != gegengewichtIndex).ToList();
                         GGforce = forceCalc_for_Gegengewicht.CalculateForces(Gegengewicht); //=> to Export
                         totalG = forceCalc.CalculateTotalForces(g_lastenList_withoutGG).ToList();
-                    }
+                    
+                }
                     else
                     {
-                        totalG = forceCalc.CalculateTotalForces(g_lastenList).ToList();
+                        totalG = totalG_with_GG;
                     }
 
                     normal_Forces.Add(new double[] { totalG[0].N, totalG[1].N });

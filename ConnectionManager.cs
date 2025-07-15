@@ -38,7 +38,7 @@ namespace Verrollungsnachweis
     {
         private IApplication app;
         private IModel model;
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+       
         
         public (IApplication, IModel) GetConnect()
         {
@@ -55,7 +55,7 @@ namespace Verrollungsnachweis
                 {
                     throw new RstabConnectionException(ConnectionErrorType.NoModel, "Kein aktives Modell gefunden. Bitte öffnen Sie ein Modell in der RSTAB.", new Exception("model == null"));
                 }
-                logger.Info("Kapcsolat sikeresen létrejött az RSTAB alkalmazással.");
+                LoggerService.Info("Kapcsolat sikeresen létrejött az RSTAB alkalmazással.");
                     return (app, model);
             }
                 

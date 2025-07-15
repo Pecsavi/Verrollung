@@ -17,14 +17,15 @@ namespace Verrollungsnachweis
         public int? selectedEK;
         
         HelperFunc Rstabfv =  HelperFunc.Instance; //only 1 instance of HelperFunc
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+        
        
         public Form1()
         {
             try
             {
                 LogManager.Setup().LoadConfigurationFromFile("nlog.config");
-                logger.Info("Application started");
+                LoggerService.Info("Application started");
+                LoggerService.UserActivity($"User {Environment.UserName} started the program on {Environment.MachineName} at {DateTime.Now}");
                 InitializeComponent();
                 Rstabfv.GetConnect();
                 this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
@@ -35,7 +36,7 @@ namespace Verrollungsnachweis
             catch (Exception e)
             {
                 DialogResult result = MessageBox.Show($"Fehler bei Inizialisierung.Ich soll das Programlauf beenden\n{e.Message}", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(e, "Error during initialization");
+                LoggerService.Error(e, "Error during initialization");
                 Rstabfv.TheEnd();
             }
         }
@@ -84,6 +85,7 @@ namespace Verrollungsnachweis
                 Rstabfv.CompareExcerRow();
                 Export excel = new Export(Rstabfv);
                 excel.ExportToXls();
+                LoggerService.UserActivity("No Problem - " + DateTime.Now);
                 Rstabfv.TheEnd();
                 System.Environment.Exit(0);
             }
@@ -126,7 +128,7 @@ namespace Verrollungsnachweis
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            logger.Info("Form Closing");
+            LoggerService.Info("Form Closing");
             Rstabfv.TheEnd();
         }
 
