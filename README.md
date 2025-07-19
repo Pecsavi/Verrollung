@@ -10,6 +10,9 @@ Since the program was written for a specific task, its usefulness for the averag
 3.	The program is written for Windows and works with Rstab8.
 4.	After starting, the program will prompt for the support points and load combination.
 5.	The program will then automatically identify the load cases specified as live load in the load combination that are critical for the structure's slippage.
+6. 	The program writes the output data into the `Verrollung.xltx` Excel file.
+   	The file included in the repository is a sample and is required for the program to function.
+   	The original version is not published, but the structure is identical
 
 ## Support Information
 If you need assistance, please contact: pecsavi73@gmail.com  
