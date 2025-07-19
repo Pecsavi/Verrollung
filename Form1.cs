@@ -17,21 +17,27 @@ namespace Verrollungsnachweis
         public int? selectedEK;
         
         HelperFunc Rstabfv =  HelperFunc.Instance; //only 1 instance of HelperFunc
-        
-       
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            await CheckVersion.InitializeAsync();
+        }
         public Form1()
         {
             try
             {
-                LogManager.Setup().LoadConfigurationFromFile("nlog.config");
+               
                 LoggerService.Info("Application started");
-                LoggerService.UserActivity($"User {Environment.UserName} started the program on {Environment.MachineName} at {DateTime.Now}");
+                LoggerService.UserActivity("üzenet a szervernek");
                 InitializeComponent();
                 Rstabfv.GetConnect();
                 this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
                 Application.ApplicationExit += new EventHandler(OnApplicationExit);
                 List<string> Ergebniskomb = Rstabfv.GetEKName();
                 comboBox1.Items.AddRange(Ergebniskomb.ToArray());
+
+                this.Load += Form1_Load; // esemény feliratkozás
+
             }
             catch (Exception e)
             {
@@ -85,7 +91,6 @@ namespace Verrollungsnachweis
                 Rstabfv.CompareExcerRow();
                 Export excel = new Export(Rstabfv);
                 excel.ExportToXls();
-                LoggerService.UserActivity("No Problem - " + DateTime.Now);
                 Rstabfv.TheEnd();
                 System.Environment.Exit(0);
             }

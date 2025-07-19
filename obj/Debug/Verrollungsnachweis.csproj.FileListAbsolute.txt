@@ -144,3 +144,13 @@ G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollu.9F359F2
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.exe
 G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.pdb
 C:\Users\peren\source\repos\Verrollungsnachweis_02\bin\Debug\Datas\Verrollung.xltx
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\Datas\Verrollung.xltx
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\nlog.config
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\Newtonsoft.Json.dll
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\Newtonsoft.Json.xml
+G:\Andere Computer\DD_PC\repos\Verrollungsnachweis_02\bin\Debug\settings.json
+C:\Users\peren\source\repos\Verrollungsnachweis_02\bin\Debug\nlog.config
+C:\Users\peren\source\repos\Verrollungsnachweis_02\bin\Debug\settings.json
+C:\Users\peren\source\repos\Verrollungsnachweis_02\bin\Debug\Newtonsoft.Json.dll
+C:\Users\peren\source\repos\Verrollungsnachweis_02\bin\Debug\Newtonsoft.Json.xml
+C:\Users\peren\source\repos\Verrollungsnachweis_02\obj\Debug\Verrollungsnachweis.exe.config

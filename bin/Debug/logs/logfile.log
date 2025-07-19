@@ -1,17 +1,22 @@
-2025-07-03 20:42:55.8752|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-03 20:42:56.1361|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
-2025-07-13 18:34:26.8428|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-13 18:34:27.0594|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
-2025-07-13 19:36:57.9791|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-13 19:36:58.1341|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
-2025-07-13 19:37:59.9202|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-13 19:38:00.0249|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
-2025-07-13 19:38:23.8430|ERROR|Verrollungsnachweis.HelperFunc|SelectElement - Der Remoteprozeduraufruf ist fehlgeschlagen. (Ausnahme von HRESULT: 0x800706BE)
-2025-07-13 19:38:29.2699|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-13 19:38:31.9074|ERROR|Verrollungsnachweis.HelperFunc|GetConnect - Keine aktive RSTAB gefunden. Bitte starten Sie die RSTAB und versuchen Sie es erneut.     bei System.Runtime.InteropServices.Marshal.GetActiveObject(Guid& rclsid, IntPtr reserved, Object& ppunk)
-   bei System.Runtime.InteropServices.Marshal.GetActiveObject(String progID)
-   bei Verrollungsnachweis.ConnectionManager.GetConnect() in C:\Users\peren\source\repos\Verrollungsnachweis_02\ConnectionManager.cs:Zeile 47.
-2025-07-13 19:42:25.6762|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-13 19:42:25.9235|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
-2025-07-13 20:25:15.3698|INFO|Verrollungsnachweis.Form1|Application started
-2025-07-13 20:25:15.5391|INFO|Verrollungsnachweis.ConnectionManager|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-16 19:16:19.6302|INFO|ProgramLogger|Application started
+2025-07-16 19:16:19.7561|INFO|ActivityLogger|User cs.perenyi started the program on NB-IRING11 at 16.07.2025 19:16:19
+2025-07-16 19:16:20.0849|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-16 19:17:17.9743|INFO|ActivityLogger|No Problem - 16.07.2025 19:17:17
+2025-07-16 20:59:46.4769|INFO|ProgramLogger|Application started
+2025-07-16 20:59:46.4925|INFO|ActivityLogger|User peren started the program on DESKTOP-DD at 2025. 07. 16. 20:59:46
+2025-07-16 21:00:15.1132|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-16 21:00:48.9751|INFO|ActivityLogger|No Problem - 2025. 07. 16. 21:00:48
+2025-07-16 21:16:02.4033|INFO|ProgramLogger|Application started
+2025-07-16 21:16:24.7183|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-16 21:40:59.6657|INFO|ProgramLogger|Application started
+2025-07-16 21:41:22.0855|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-18 17:39:19.3469|INFO|ProgramLogger|Application started
+2025-07-18 17:39:19.5759|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-18 17:40:45.1991|INFO|ProgramLogger|Application started
+2025-07-18 17:40:45.3840|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-18 20:39:54.0823|INFO|ProgramLogger|Application started
+2025-07-18 20:39:54.3489|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-18 20:41:31.4418|INFO|ProgramLogger|Application started
+2025-07-18 20:41:31.6378|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.
+2025-07-18 20:43:26.9676|INFO|ProgramLogger|Application started
+2025-07-18 20:43:27.1969|INFO|ProgramLogger|Kapcsolat sikeresen létrejött az RSTAB alkalmazással.

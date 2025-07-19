@@ -18,13 +18,28 @@ namespace Verrollungsnachweis
     {
        
 
-        private static readonly Logger programLogger = LogManager.GetLogger("ProgramLogger");
-        private static readonly Logger activityLogger = LogManager.GetLogger("ActivityLogger");
+        private static Logger programLogger = LogManager.GetLogger("ProgramLogger");
+        private static Logger activityLogger = LogManager.GetLogger("ActivityLogger");
 
 
         static LoggerService()
         {
-            LogManager.Setup().LoadConfigurationFromFile("nlog.config");
+            var configJson = File.ReadAllText("settings.json");
+            var configDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(configJson);
+
+            var config = new XmlLoggingConfiguration("nlog.config");
+           
+            if (configDict.TryGetValue("Userlog", out string userLogPath))
+            {
+                var fileTarget = config.FindTargetByName<FileTarget>("useractivity");
+                if (fileTarget != null)
+                    fileTarget.FileName = userLogPath;
+            }
+
+            LogManager.Configuration = config;
+
+            programLogger = LogManager.GetLogger("ProgramLogger");
+            activityLogger = LogManager.GetLogger("ActivityLogger");
         }
 
         public static void Info(string message)
@@ -62,8 +77,6 @@ namespace Verrollungsnachweis
             programLogger.Warn(ex, message);
         }
 
-
-        // Felhasználói aktivitás naplózása (közös fájlba)
         public static void UserActivity(string message)
         {
             activityLogger.Info(message);
