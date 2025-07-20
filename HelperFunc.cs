@@ -614,7 +614,7 @@ namespace Verrollungsnachweis
                     "\n            T/N=(M1:)" + Math.Round(Ergebnis_trad_sum[0], 3) + "<=>(M2:)"+ Math.Round(Bestratio_new2[0], 3) +
                     "\nHinten:\n        Methode1: "+Ergebnis_trad_str[1]+"\n       Methode2: " + Ergebnis_new_str[1] +
                     "\n            T/N=(M1:)" + Math.Round(Ergebnis_trad_sum[1],3) + "<=>(M2:)" + Math.Round(Bestratio_new2[1],3)
-                    , "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    , "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (Bestratio_new2[0] > Ergebnis_trad_sum[0] || Bestratio_new2[1] > Ergebnis_trad_sum[1])
                 {
                     RowNumberInExcel = new List<int[]>(Ergebnis_new);

@@ -105,7 +105,7 @@ namespace Verrollungsnachweis
             this.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
-            this.Text = "Verrollungsnachweis VORAB Version nur zu Testzwecken";
+            this.Text = "Verrollungsnachweis - Version:1.4.3.0";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

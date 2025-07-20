@@ -18,7 +18,7 @@ namespace Verrollungsnachweis
         Excel.Range excelRange3 = null;
         Excel.Range excelRange4 = null;
         object[,] cellValuesToWrite = null;
-        object[,] cellValuesToWrite2 = null;
+        //object[,] cellValuesToWrite2 = null;
         object[,] cellValuesToWrite3 = null;
         object[,] cellValuesToWrite4 = null;
         public HelperFunc RstabFv;
