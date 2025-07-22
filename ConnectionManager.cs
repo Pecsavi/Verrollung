@@ -156,7 +156,9 @@ namespace Verrollungsnachweis
         {
             if (model != null)
             {
+                Marshal.ReleaseComObject(model); //proba
                 model = null;
+                
             }
             if (app != null)
             {
@@ -164,6 +166,7 @@ namespace Verrollungsnachweis
                 {
                     app.UnlockLicense();
                 }
+                Marshal.ReleaseComObject(app);
                 app = null;
             }
             Kill_Background_Process("RSTAB64");
