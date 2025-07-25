@@ -171,7 +171,7 @@ namespace Verrollungsnachweis
                 LoggerService.Error(callerName + " - " + ex.Message + ": Unhandled exception in HelperFunc");
 
             }
-            ConnectionManager.Kill_Background_Process("RSTAB8");
+            ConnectionManager.Kill_Background_Process("RSTAB64");
             System.Windows.Forms.Application.Restart();
             TheEnd();
         }
@@ -281,7 +281,7 @@ namespace Verrollungsnachweis
                 if (!IsConnected()) { return false; }
                 connectionManager.LockAndUnlockLicense(() =>
                 {
-                    //Dlubal.RSTAB8.IModel model = app.GetActiveModel();
+
                     IView view = model.GetActiveView();
                     
                     app.Show();
@@ -377,7 +377,7 @@ namespace Verrollungsnachweis
                 if (!IsConnected()) { return false; }
                 connectionManager.LockAndUnlockLicense(() =>
                 {
-                    //Dlubal.RSTAB8.IModel model = app.GetActiveModel();
+                  
                     IModelData data = model.GetModelData();
                     NodalSupport[] allSupports = data.GetNodalSupports();
                     Member[] members = data.GetMembers();
@@ -642,7 +642,7 @@ namespace Verrollungsnachweis
                 connectionManager.LockAndUnlockLicense(() =>
                 {
                     
-                    //Dlubal.RSTAB8.IModel model = app.GetActiveModel();
+                    
                     data = model.GetModelData();
                     Pontok = data.GetNodes();
                     allMembers = data.GetMembers();
