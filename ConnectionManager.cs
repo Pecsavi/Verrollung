@@ -36,6 +36,12 @@ namespace Verrollungsnachweis
 
     public class ConnectionManager
     {
+        private static readonly Lazy<ConnectionManager> _instance =
+        new Lazy<ConnectionManager>(() => new ConnectionManager());
+
+        private ConnectionManager() { }
+
+        public static ConnectionManager Instance => _instance.Value;
         private IApplication app;
         private IModel model;
        
@@ -149,9 +155,6 @@ namespace Verrollungsnachweis
                 }
             }
         }
-
-       
-
         internal void CloseConnection()
         {
             if (model != null)

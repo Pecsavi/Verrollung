@@ -84,7 +84,7 @@ namespace Verrollungsnachweis
         public static HelperFunc Instance => _instance.Value;
 
      
-        private readonly ConnectionManager connectionManager = new ConnectionManager();
+        private readonly ConnectionManager connectionManager = ConnectionManager.Instance;
         IApplication app = null;
         IModel model = null;
         public List<int> selectElement = null;

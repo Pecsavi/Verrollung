@@ -21,12 +21,9 @@ namespace Verrollungsnachweis
         //object[,] cellValuesToWrite2 = null;
         object[,] cellValuesToWrite3 = null;
         object[,] cellValuesToWrite4 = null;
-        public HelperFunc RstabFv;
         int InsertableRows;
-        public Export(HelperFunc rstab)
-         {
-            RstabFv=rstab;
-         }
+        public HelperFunc RstabFv = HelperFunc.Instance;
+        public Export() { }
         public void ExportToXls()
         {
             string ModelName = RstabFv.modelName;

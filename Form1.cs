@@ -5,9 +5,6 @@ using System.Windows.Forms;
 using System.Linq;
 
 
-
-
-
 namespace Verrollungsnachweis
 {
     public partial class Form1 : Form
@@ -16,7 +13,7 @@ namespace Verrollungsnachweis
         private int _selectedEk;
         public int? selectedEK;
         
-        HelperFunc Rstabfv =  HelperFunc.Instance; //only 1 instance of HelperFunc
+        HelperFunc Rstabfv =  HelperFunc.Instance;
 
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -36,7 +33,7 @@ namespace Verrollungsnachweis
                 List<string> Ergebniskomb = Rstabfv.GetEKName();
                 comboBox1.Items.AddRange(Ergebniskomb.ToArray());
 
-                this.Load += Form1_Load; // esemény feliratkozás
+                this.Load += Form1_Load;
 
             }
             catch (Exception e)
@@ -89,7 +86,7 @@ namespace Verrollungsnachweis
                 Rstabfv.Get_Forces();
                 Rstabfv.Verrollung_MaxTKs(Rstabfv.tangentialSupport, _selectedEk);
                 Rstabfv.CompareExcerRow();
-                Export excel = new Export(Rstabfv);
+                Export excel = new Export();
                 excel.ExportToXls();
                 Rstabfv.TheEnd();
                 System.Environment.Exit(0);
