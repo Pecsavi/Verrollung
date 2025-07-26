@@ -29,13 +29,6 @@ namespace Verrollungsnachweis
 
             var config = new XmlLoggingConfiguration("nlog.config");
            
-            if (configDict.TryGetValue("Userlog", out string userLogPath))
-            {
-                var fileTarget = config.FindTargetByName<FileTarget>("useractivity");
-                if (fileTarget != null)
-                    fileTarget.FileName = userLogPath;
-            }
-
             LogManager.Configuration = config;
 
             programLogger = LogManager.GetLogger("ProgramLogger");

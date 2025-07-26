@@ -1,0 +1,3 @@
+Das Programm sucht für die Untersuchung der Verrollung der Struktur jene Lastkombination, 
+bei der die maximale Tangentialkraft mit der geringsten Normalkraft auftritt. 
+Das Ergebnis wird in Tabellenform dargestellt.
