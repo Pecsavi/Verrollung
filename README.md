@@ -35,3 +35,17 @@ This project is licensed under the terms that anyone can use it, but modificatio
 •	**Submit a pull request:** Once your changes are ready, submit a pull request (PR) to the main repository. In the PR, describe the changes you made and why. Note that these changes are suggestions and will not be merged directly into the main project. The project maintainer will review the suggestions and decide whether to incorporate them.  
 ### Code of Conduct  
 •	**Code of Conduct:** Follow the project's code of conduct to ensure respectful and professional interactions.
+
+## Dependencies
+
+This project uses the following NuGet packages:
+
+- **NLog** (BSD-2-Clause License)  
+  [https://nlog-project.org](https://nlog-project.org)
+
+- **Newtonsoft.Json** (MIT License)  
+  [https://www.newtonsoft.com/json](https://www.newtonsoft.com/json)
+
+## License
+
+This project includes third-party libraries under their respective licenses. See the comments in `Program.cs` for details.
