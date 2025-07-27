@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="LoggerService.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramVersionInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CheckVersion.cs" />
     <None Include="Datas\Verrollung.xltx">
