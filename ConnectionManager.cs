@@ -149,7 +149,6 @@ namespace Verrollungsnachweis
             {
                 if (process.MainWindowHandle == IntPtr.Zero)
                 {
-                    MessageBox.Show($"{processName} läuft im Hintergrund. Ich beende es über den Task-Manager.");
                     process.Kill();
                     process.WaitForExit();
                 }
@@ -157,6 +156,10 @@ namespace Verrollungsnachweis
         }
         internal void CloseConnection()
         {
+            try
+            {
+
+          
             if (model != null)
             {
                 Marshal.ReleaseComObject(model); //proba
@@ -176,6 +179,35 @@ namespace Verrollungsnachweis
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Environment.Exit(0);
+            }
+            catch (Exception)
+            {
+                Environment.Exit(1);
+            }
+        }
+        internal void CloseConnectionWithoutExit()
+        {
+
+            if (model != null)
+            {
+                Marshal.ReleaseComObject(model);
+                model = null;
+
+            }
+            if (app != null)
+            {
+                if (app.IsComLicensed())
+                {
+                    app.UnlockLicense();
+                }
+                Marshal.ReleaseComObject(app);
+                app = null;
+            }
+            Kill_Background_Process("RSTAB64");
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+
         }
     }
 }

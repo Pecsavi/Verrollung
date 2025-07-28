@@ -27,6 +27,11 @@ namespace Verrollungsnachweis
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            var versionOk = CheckVersion.InitializeAsync().GetAwaiter().GetResult();
+            if (!versionOk)
+            {
+                return;
+            }
             Application.Run(new Form1());
         }
     }

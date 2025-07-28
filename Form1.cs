@@ -15,10 +15,7 @@ namespace Verrollungsnachweis
         
         HelperFunc Rstabfv =  HelperFunc.Instance;
 
-        private async void Form1_Load(object sender, EventArgs e)
-        {
-            await CheckVersion.InitializeAsync();
-        }
+        
         public Form1()
         {
             try
@@ -27,13 +24,11 @@ namespace Verrollungsnachweis
                 LoggerService.Info("Application started");
                 LoggerService.UserActivity("üzenet a szervernek");
                 InitializeComponent();
-                Rstabfv.GetConnect();
                 this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
                 Application.ApplicationExit += new EventHandler(OnApplicationExit);
+                Rstabfv.GetConnect();
                 List<string> Ergebniskomb = Rstabfv.GetEKName();
-                comboBox1.Items.AddRange(Ergebniskomb.ToArray());
-
-                this.Load += Form1_Load;
+                comboBox1.Items.AddRange(Ergebniskomb?.ToArray() ?? Array.Empty<string>());
 
             }
             catch (Exception e)
