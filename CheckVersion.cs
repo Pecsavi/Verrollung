@@ -176,6 +176,9 @@ if not errorlevel 1 (
     goto wait
 )
 start """" ""{installerPath}""
+timeout /t 5 >nul
+start """""""" """"{{exePath}}""""
+""
 ");
 
                 Process.Start(new ProcessStartInfo

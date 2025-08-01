@@ -137,8 +137,30 @@ namespace Verrollungsnachweis
             }
         }
 
+        internal static void LogRunningRstabProcesses()
+        {
+            Process[] processes = Process.GetProcessesByName("RSTAB64");
+            if (processes.Length == 0)
+            {
+                LoggerService.Info("Keine Laufende RSTAB64");
+                return;
+            }
+
+            foreach (Process process in processes)
+            {
+                bool hasWindow = process.MainWindowHandle != IntPtr.Zero;
+                LoggerService.Info($"RSTAB64 prozess: PID={process.Id}, Gibt es Fenster: {hasWindow}");
+            }
+        }
+
+
+
+
         internal static void Kill_Background_Process(string processName)
         {
+
+            LogRunningRstabProcesses();
+
             Process[] processes = Process.GetProcessesByName(processName);
             if (processes.Length == 0)
             {

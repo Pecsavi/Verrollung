@@ -48,4 +48,5 @@ This project uses the following NuGet packages:
 
 ## License
 
+This project is released as open source and is publicly available.  
 This project includes third-party libraries under their respective licenses. See the comments in `Program.cs` for details.
