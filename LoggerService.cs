@@ -24,16 +24,47 @@ namespace Verrollungsnachweis
 
         static LoggerService()
         {
+            
+            // load settings.json
             var configJson = File.ReadAllText("settings.json");
             var configDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(configJson);
 
-            var config = new XmlLoggingConfiguration("nlog.config");
-           
-            LogManager.Configuration = config;
+            // get RemoteLogUrl
+            string remoteUrl = configDict.ContainsKey("RemoteLogUrl") ? configDict["RemoteLogUrl"] : null;
+
+            var nlogConfig = new LoggingConfiguration();
+
+            // File target
+            var fileTarget = new FileTarget("logfile")
+            {
+                FileName = "logs/logfile.log",
+                Layout = "${longdate}|${level:uppercase=true}|${logger}|${message}"
+            };
+            nlogConfig.AddTarget(fileTarget);
+            nlogConfig.AddRule(LogLevel.Info, LogLevel.Fatal, fileTarget, "ProgramLogger");
+
+            // WebService target, if URL exists
+            if (!string.IsNullOrEmpty(remoteUrl))
+            {
+                var webTarget = new WebServiceTarget("remoteUserLog")
+                {
+                    Url = new Uri(remoteUrl),
+                    Protocol = WebServiceProtocol.JsonPost
+                };
+                webTarget.Parameters.Add(new MethodCallParameter("machine", "${machinename}"));
+                webTarget.Parameters.Add(new MethodCallParameter("timestamp", "${longdate}"));
+
+                nlogConfig.AddTarget(webTarget);
+                nlogConfig.AddRule(LogLevel.Info, LogLevel.Fatal, webTarget, "ActivityLogger");
+            }
+
+            LogManager.Configuration = nlogConfig;
 
             programLogger = LogManager.GetLogger("ProgramLogger");
             activityLogger = LogManager.GetLogger("ActivityLogger");
         }
+
+        
 
         public static void Info(string message)
         {
