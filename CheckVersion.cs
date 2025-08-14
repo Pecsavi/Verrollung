@@ -71,7 +71,7 @@ namespace Verrollungsnachweis
             }
             catch (Exception ex)
             {
-                LoggerService.Error(ex, $"Die Datei version.json konnte von der folgenden URL nicht heruntergeladen werden");
+                LoggerService.Error(ex, $"Die Datei programsInfo.json konnte von der folgenden URL nicht heruntergeladen werden");
                 return null;
             }
         }
@@ -90,13 +90,13 @@ namespace Verrollungsnachweis
                 }
                 else
                 {
-                    MessageBox.Show("Die aktuelle Programmversion wurde in der Datei version.json nicht gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Die aktuelle Programmversion wurde in der Datei programsInfo.json nicht gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                LoggerService.Error(ex, "Die Datei version.json konnte nicht verarbeitet werden");
+                LoggerService.Error(ex, "Die Datei programsInfo.json konnte nicht verarbeitet werden");
                 return false;
             }
         }
