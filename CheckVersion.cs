@@ -125,10 +125,11 @@ namespace Verrollungsnachweis
                         {
                             RunInstallerAndExit(installerPath);
                         }
-                        return false; // ne folytassa a programot
+                        return false; // program interrupting
                     }
                 }
-                return true; // nincs frissítés, vagy nem kérte a felhasználó
+                return true; // Returns true if there's no update available or the user declined it.
+
             }
             catch (Exception ex)
             {
@@ -145,7 +146,7 @@ namespace Verrollungsnachweis
                 LoggerService.Info($"Installationsprogramm wird heruntergeladen");
                 string tempPath = Path.Combine(Path.GetTempPath(), Path.GetFileName(url));
                 var data = await client.GetByteArrayAsync(url);
-                File.WriteAllBytes(tempPath, data); // .NET Framework: szinkron írás
+                File.WriteAllBytes(tempPath, data); 
                 return tempPath;
             }
             catch (Exception ex)
