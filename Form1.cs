@@ -23,6 +23,7 @@ namespace Verrollungsnachweis
                 LoggerService.Info("Application started");
                 LoggerService.UserActivity("üzenet a szervernek");
                 InitializeComponent();
+                this.Load += Form1_Load;
                 this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
                 Application.ApplicationExit += new EventHandler(OnApplicationExit);
                 Rstabfv.GetConnect();
@@ -36,6 +37,11 @@ namespace Verrollungsnachweis
                 LoggerService.Error(e, "Error during initialization");
                 Rstabfv.TheEnd();
             }
+        }
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            await CheckVersion.RunVersionCheckAsync();
         }
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
