@@ -21,10 +21,15 @@ namespace Verrollungsnachweis
         private static Logger programLogger = LogManager.GetLogger("ProgramLogger");
         private static Logger activityLogger = LogManager.GetLogger("ActivityLogger");
 
+        private static readonly string logPath = Path.Combine(
+           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+           "Verrollung", "logs", "logfile.log"
+       );
 
         static LoggerService()
         {
-            
+            Directory.CreateDirectory(Path.GetDirectoryName(logPath));
+
             // load settings.json
             var configJson = File.ReadAllText("settings.json");
             var configDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(configJson);
@@ -37,7 +42,7 @@ namespace Verrollungsnachweis
             // File target
             var fileTarget = new FileTarget("logfile")
             {
-                FileName = "logs/logfile.log",
+                FileName = logPath,
                 Layout = "${longdate}|${level:uppercase=true}|${logger}|${message}"
             };
             nlogConfig.AddTarget(fileTarget);

@@ -1,5 +1,27 @@
-.vs/
-obj/
+
+# User-specific files
 **/Verrollung.xltx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 settings.json
+droppedfiles.txt
+
+# Build results
 bin/
+obj/
+
+# Visual Studio cache
+.vs/
+
+# Logs
+*.log
+
+# Debug and release folders
+Debug/
+Release/
+
+# NuGet packages
+*.nupkg
+packages/

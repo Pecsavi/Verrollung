@@ -1,0 +1,7 @@
+{
+  "VersionPath": "https://example.com/path/to/programsInfo.json",
+  "RemoteLogUrl": "https://example.com/path/to/log.php",
+  "UpdatePath": "https://example.com/path/to/update",
+  "ProgramBasePath": "C:/Path/To/Program",
+  "ExpectedThumbprint": "<THUMBPRINT_PLACEHOLDER>"
+}

@@ -50,7 +50,7 @@ namespace Verrollungsnachweis
         }
         private void InfoFahrwerk_Click(object sender, EventArgs e)
         {
-            InfoForm("Diese Elemente soll ausgewählt werden:", "_2022_11_06_20_51_56_Window");
+            InfoForm.InfoWindow("Diese Elemente soll ausgewählt werden:", "_2022_11_06_20_51_56_Window");
         }
 
         private void button1_Click(object sender, EventArgs e)
